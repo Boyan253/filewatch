@@ -22,3 +22,12 @@ def test_snapshot_skips_noise_directories(tmp_path):
 def test_diff_detects_added():
     added, _, _ = filewatch.diff({}, {"a": (1, 1)})
     assert added == ["a"]
+
+
+def test_diff_detects_removed():
+    _, removed, _ = filewatch.diff({"a": (1, 1)}, {})
+    assert removed == ["a"]
+
+def test_diff_detects_changed():
+    _, _, changed = filewatch.diff({"a": (1, 1)}, {"a": (2, 1)})
+    assert changed == ["a"]
