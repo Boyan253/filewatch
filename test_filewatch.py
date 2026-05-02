@@ -31,3 +31,8 @@ def test_diff_detects_removed():
 def test_diff_detects_changed():
     _, _, changed = filewatch.diff({"a": (1, 1)}, {"a": (2, 1)})
     assert changed == ["a"]
+
+
+def test_describe_summarises():
+    text = filewatch.describe(["x/new.py"], [], ["x/old.py"])
+    assert "+new.py" in text and "~old.py" in text
