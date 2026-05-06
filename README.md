@@ -18,3 +18,10 @@ python filewatch.py . --shell -- "npm run build && npm test"
 ```
 
 Stop with ctrl-c.
+
+## How it works
+
+Every `--interval` seconds it takes a snapshot of mtime and size for every
+watched file and compares it with the previous one. When something differs it
+waits `--debounce` seconds and re-checks, so a save that touches twenty files
+triggers one run, not twenty.
