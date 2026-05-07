@@ -25,3 +25,16 @@ Every `--interval` seconds it takes a snapshot of mtime and size for every
 watched file and compares it with the previous one. When something differs it
 waits `--debounce` seconds and re-checks, so a save that touches twenty files
 triggers one run, not twenty.
+
+## Options
+
+| flag | effect |
+|------|--------|
+| `-e .py` | only watch these extensions (repeatable) |
+| `-i 0.6` | poll interval in seconds |
+| `--debounce 0.3` | settle time before running |
+| `--initial` | run once at startup instead of waiting for a change |
+| `--shell` | run the command through the shell, for pipes and `&&` |
+
+`.git`, `node_modules`, `__pycache__`, virtualenvs and build directories are
+never watched.
