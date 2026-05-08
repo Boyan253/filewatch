@@ -38,3 +38,10 @@ triggers one run, not twenty.
 
 `.git`, `node_modules`, `__pycache__`, virtualenvs and build directories are
 never watched.
+
+## Tests
+
+```
+pip install pytest
+pytest
+```
