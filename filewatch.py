@@ -7,6 +7,8 @@ import subprocess
 import sys
 import time
 
+__version__ = "0.1.0"
+
 SKIP_DIRS = {".git", "node_modules", "__pycache__", ".venv", "venv", "dist",
              "build", ".pytest_cache", ".mypy_cache"}
 
@@ -54,6 +56,8 @@ def run(command, shell=False):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--version", action="version",
+                    version="%(prog)s " + __version__)
     ap.add_argument("path", nargs="?", default=".")
     ap.add_argument("-e", "--ext", action="append", default=[],
                     help="only watch these extensions, e.g. -e .py -e .toml")
